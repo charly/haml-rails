@@ -1,5 +1,11 @@
-%h1 New <%= singular_table_name %>
+#content
+  .wires
+    %h1 Editing <%= singular_table_name %>
 
-= render 'form'
+    = form_for @<%= singular_table_name %> do |f|
+      = render 'form', :f => f
 
-= link_to 'Back', <%= index_helper %>_path
+    = link_to 'Back', <%= index_helper %>_path
+
+#sidebar
+  .wires

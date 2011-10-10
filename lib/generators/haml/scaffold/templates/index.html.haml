@@ -1,23 +1,25 @@
-%h1 Listing <%= plural_table_name %>
+#content
+  .wires
+    %h1 Listing <%= plural_table_name %>
 
-%table
-  %tr
+    %table
+      %tr
 <% for attribute in attributes -%>
-    %th <%= attribute.human_name %>
+        %th <%= attribute.human_name %>
 <% end -%>
-    %th
-    %th
-    %th
+        %th show
+        %th edit
+        %th destroy
 
-  - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
-    %tr
+      - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+        %tr
 <% for attribute in attributes -%>
-      %td= <%= singular_table_name %>.<%= attribute.name %>
+          %td= <%= singular_table_name %>.<%= attribute.name %>
 <% end -%>
-      %td= link_to 'Show', <%= singular_table_name %>
-      %td= link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>)
-      %td= link_to 'Destroy', <%= singular_table_name %>, :confirm => 'Are you sure?', :method => :delete
+          %td= link_to 'Show', <%= singular_table_name %>
+          %td= link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>)
+          %td= link_to 'Destroy', <%= singular_table_name %>, :confirm => 'Are you sure?', :method => :delete
 
-%br
+    %br
 
-= link_to 'New <%= human_name %>', new_<%= singular_table_name %>_path
+    = link_to 'New <%= human_name %>', new_<%= singular_table_name %>_path
