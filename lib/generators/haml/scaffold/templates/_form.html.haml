@@ -1,8 +1,7 @@
-%fieldset
-  %legend
+= simple_form_for @<%= singular_table_name %> do |f|
+
 <% for attribute in attributes -%>
-  = f.label :<%= attribute.name %>
-  = f.<%= attribute.field_type %> :<%= attribute.name %>
+  = f.input :<%= attribute.name %>
 <% end -%>
 
-%p= f.submit 'Save'
+  %p= f.input :button, class: "btn btn-success" do

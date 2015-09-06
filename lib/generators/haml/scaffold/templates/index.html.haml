@@ -1,25 +1,27 @@
-#content
-  .wires
+.row
+  .col-md-12
     %h1 Listing <%= plural_table_name %>
 
     %table
-      %tr
-<% for attribute in attributes -%>
-        %th <%= attribute.human_name %>
-<% end -%>
-        %th show
-        %th edit
-        %th destroy
-
-      - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+      %thead
         %tr
 <% for attribute in attributes -%>
-          %td= <%= singular_table_name %>.<%= attribute.name %>
+          %th <%= attribute.human_name %>
 <% end -%>
-          %td= link_to 'Show', <%= singular_table_name %>
-          %td= link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>)
-          %td= link_to 'Destroy', <%= singular_table_name %>, :confirm => 'Are you sure?', :method => :delete
+          %th show
+          %th edit
+          %th destroy
+      %tbody
+        - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+          %tr
+<% for attribute in attributes -%>
+            %td= <%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
+            %td= link_to 'Show', <%= singular_table_name %>
+            %td= link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>)
+            %td= link_to 'Destroy', <%= singular_table_name %>, method: :delete, {confirm: 'Are you sure?'}
 
-    %br
-
-    = link_to 'New <%= human_name %>', new_<%= singular_table_name %>_path
+    = will_paginate @<%= plural_table_name %>
+.row
+  %br
+  = link_to 'New <%= human_name %>', new_<%= singular_table_name %>_path
