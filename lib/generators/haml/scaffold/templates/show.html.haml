@@ -1,5 +1,5 @@
-#content
-  .wires
+.row
+  .col-md-8
     %p#notice= notice
 
 <% for attribute in attributes -%>
@@ -12,5 +12,4 @@
     \|
     = link_to 'Back', <%= index_helper %>_path
 
-#sidebar
-  .wires
+.col-md-4

@@ -1,13 +1,12 @@
-#content
-  .wires
+.row
+  .col-md-8
     %h1 Editing <%= singular_table_name %>
 
-    = form_for @<%= singular_table_name %> do |f|
-      = render 'form', :f => f
+    = render 'form'
 
     = link_to 'Show', @<%= singular_table_name %>
     \|
     = link_to 'Back', <%= index_helper %>_path
 
-#sidebar
-  .wires
+.col-md-4
+  Menu
